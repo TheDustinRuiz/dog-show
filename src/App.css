@@ -1,0 +1,210 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-attachment: scroll;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h2 {
+  display: inline-block;
+  color: #fff;
+  background-color: rgba(180, 50, 70, 0.6);
+  box-shadow: 0 2px 4px rgba(180, 50, 70, 0.6);
+  border: 2px solid rgba(180, 50, 70, 0.8);
+  border-radius: 5px; 
+  padding: 2px 50px; 
+}
+
+.nav-bar {
+  background-color: rgba(180, 50, 70, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.nav-bar a {
+  color: #fff;
+  margin: 0 20px;
+}
+
+.nav-bar button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+.nav-bar button:hover {
+  background-color: rgba(128, 0, 32, 0.5);
+}
+
+.header {
+  background-color: rgba(128, 0, 32, 0.8);
+  color: #fff;
+  margin-top: 4rem;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 8px; 
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+}
+
+button {
+  background-color: rgba(180, 50, 70);
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+}
+
+button:hover {
+  background-color: rgba(180, 50, 70, 0.8);
+}
+
+.edit-post-btn {
+  position: relative;
+  top: -25px; 
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #333;
+  margin-bottom: 30px;
+}
+
+li {
+  list-style: none;
+}
+
+.list-item {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  padding-right: 500px;
+  margin-bottom: 20px;
+  margin-right: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.list-item:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.list-item h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #d32f2f;
+}
+
+.list-item p {
+  margin: 0;
+  font-family: 'Times New Roman';
+  text-align: left;
+}
+
+.delete-btn {
+  background-color: #b71c1c;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #8e0000;
+}
+
+.post-info {
+  background-color: rgba(180, 50, 70, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-info p {
+  margin: 5px 0;
+  font-size: 16px;
+}
