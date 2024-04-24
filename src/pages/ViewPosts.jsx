@@ -27,7 +27,7 @@ const ViewPosts = () => {
                <h2>All Posts</h2>
                <ul>
                     {posts.map((post) => (
-                         <div key={post.id}><Link to={`/post/${post.id}`}>
+                         <div key={post.id}><Link to={`/post/${post.id}`} style={{ textDecoration: 'none' }}>
                          <li className='list-item'>
                               <p><strong>{post.title}</strong></p>
                               <p>{post.upvotes_count} upvotes</p>
