@@ -30,34 +30,43 @@ const CreatePost = () => {
 
      return (
           <div>
-               <h2>Create New Post</h2>
-               {showMessage && <p>Post created successfully!</p>}
+               <h2>Create New Dog Post!</h2>
+               {showMessage && <p style={{ color:"#fff"}}>Post created successfully!</p>}
                <form className='form-container' autoComplete="off" onSubmit={createPost}>
-                    <label htmlFor="title">Title:</label>
                     <input
                          type="text"
                          id="title"
+                         placeholder="Title 
+                         (Including Dog name, Age, & Breed)"
                          value={title}
                          onChange={(e) => setTitle(e.target.value)}
                          required
                     />
 
-                    <label htmlFor="description">Description:</label>
-                    <input
+                    <textarea id="description" name="msg" rows="5" cols="50"
                          type="text"
-                         id="description"
+                         style={{
+                              padding: "10px",
+                              width: "750px",
+                              marginBottom: "20px",
+                              border: "1px solid #ccc",
+                              borderRadius: "5px",
+                              resize: "none"
+                          }}
+                         placeholder="Description 
+                         (Any more information about the dog, 
+                         including socials and characteristics)"
                          value={description}
                          onChange={(e) => setDescription(e.target.value)}
                          required
-                    />
+                    ></textarea>
 
-                    <label htmlFor="imageURL">Image URL (Optional):</label>
                     <input
                          type="text"
                          id="imageURL"
+                         placeholder="Image URL (Optional)"
                          value={imageURL}
                          onChange={(e) => setImageUrl(e.target.value)}
-                         required
                     />
 
                     <button type="submit">Create Post</button>

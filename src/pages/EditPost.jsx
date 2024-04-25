@@ -4,7 +4,11 @@ import { supabase } from '../client';
 
 const EditPost = () => {
      const { id } = useParams();
-     const [post, setPost] = useState([]);
+     const [post, setPost] = useState({
+          title: '',
+          description: '',
+          image_URL: ''
+     });
 
      useEffect(() => {
           const fetchPost = async () => {
@@ -32,7 +36,7 @@ const EditPost = () => {
                .update({ title: post.title, description: post.description, image_URL: post.image_URL })
                .eq('id', id); 
 
-          window.location = "/read";
+          window.location = "/viewPosts";
      };
 
      const deletePost = async () => {
@@ -52,19 +56,41 @@ const EditPost = () => {
                <input
                     type="text"
                     id="title"
+                    placeholder="Title 
+                    (Including Dog name, Age, & Breed)"
                     value={post.title}
                     onChange={(e) => setPost({ ...post, title: e.target.value })}
                     required
-               />   
-               <label htmlFor="description">Description:</label>
-               <input
-                    type="text"
-                    id="description"
-                    value={post.description}
-                    onChange={(e) => setPost({ ...post, description: e.target.value })}
-                    required
                />
-               <button type="submit-btn">Update Post</button>
+               <div>
+                    <label htmlFor="description">Description:</label>
+                    <textarea id="description" name="description" rows="5" cols="50"
+                         type="text"
+                         style={{
+                              padding: "10px",
+                              width: "750px",
+                              marginBottom: "20px",
+                              border: "1px solid #ccc",
+                              borderRadius: "5px",
+                              resize: "none"
+                         }}
+                         placeholder="Description 
+                         (Any more information about the dog, 
+                         including characteristics and socials)"
+                         value={post.description}
+                         onChange={(e) => setPost({ ...post, description: e.target.value })}
+                         required
+                    ></textarea>
+               </div>
+               <label htmlFor="description">Image URL:</label>
+               <input
+                         type="text"
+                         id="imageURL"
+                         placeholder="Image URL (Optional)"
+                         value={post.image_URL}
+                         onChange={(e) => setPost({ ...post, image_URL: e.target.value })}
+               />
+               <button className="submit-btn" type="submit-btn">Update Post</button>
                <button className='delete-btn' onClick={deletePost}>Delete Post</button>
           </form>
      </div>
