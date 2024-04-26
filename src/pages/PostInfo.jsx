@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
 import { supabase } from '../client';
+import PostComments from './PostComments';
 
 const PostInfo = () => {
      const { id } = useParams();
      const [post, setPost] = useState(null);
      const [imageStatus, setImageStatus] = useState(false);
+     const [comments, setComments] = useState([]);
      const [loading, setLoading] = useState(true);
 
      useEffect(() => {
@@ -19,14 +20,28 @@ const PostInfo = () => {
                     .single();
 
                if (error) {
-                    console.error('Error fetching posts:', error.message);
+                    console.error('Error fetching comments:', error.message);
                } else {
                     setPost(data);
                     setLoading(false);
                }
           };
 
+          const fetchComments = async () => {
+               const { data, error } = await supabase
+                    .from('Comments')
+                    .select()
+                    .eq('post_id', id);
+     
+               if (error) {
+                    console.error('Error fetching comments:', error.message);
+               } else {
+                    setComments(data || []);
+               }
+          };
+
           fetchPost();
+          fetchComments();
      }, [id]);
 
      const handleUpvote = async (postId, postUpvoteCount) => {
@@ -54,15 +69,32 @@ const PostInfo = () => {
                               <button onClick={() => handleUpvote(post.id, post.upvotes_count)}>▲</button>
                          </div>
                          <div className="post-info">
-                              <p>Title: {post.title}</p>
-                              <p>Description: {post.description}</p>
+                              <p><strong>Title:</strong> {post.title}</p>
+                              <p><strong>Description:</strong> {post.description}</p>
                               <div className="post-info-img">
-                              {post.image_URL !== '' && !imageStatus && (
-                                   <img src={post.image_URL} onError={handleImageStatus} alt="Post Image"/>
-                              )}
-                              {(imageStatus || post.image_URL === '') && (
-                                   <p>[No image provided or incorrect image URL]</p>
-                              )}
+                                   {post.image_URL !== '' && !imageStatus && (
+                                        <img src={post.image_URL} onError={handleImageStatus} alt="Post Image"/>
+                                   )}
+                                   {(imageStatus || post.image_URL === '') && (
+                                        <p style={ { color: '#888' } }>[No image provided or incorrect image URL]</p>
+                                   )}
+                              </div>
+                         </div>
+                         <div className="comment-container">
+                              <h3>Comments</h3>
+                              <div className="comments">
+                                   {comments.length === 0 ? (
+                                        <p style={{color: '#888', textAlign: 'center' }}>No comments added yet</p>
+                                   ) : (
+                                        comments.map((comment) => (
+                                             <div className="comment" key={comment.id}>
+                                                  <p>- {comment.comment}</p>
+                                             </div>
+                                        ))
+                                   )}
+                              </div>
+                              <div className="add-comment">
+                                   <PostComments postId={id} />
                               </div>
                          </div>
                          <Link to="/viewPosts" style={{ marginRight: "850px", color: "black" }}>Back</Link>
