@@ -58,7 +58,7 @@ const ViewPosts = ( { searchValue }) => {
                                                   <img src={post.image_URL} onError={handleImageStatus} alt="Post Image"/>
                                              )}
                                              {(imageStatus || post.image_URL === '') && (
-                                                  <p style={ { color: '#888' } }>[No image provided or incorrect image URL]</p>
+                                                  <p style={ { color: '#888' } }>[No image provided or <br></br>incorrect image URL]</p>
                                              )}
                                         </div>
                                         <div className="viewPosts-info">

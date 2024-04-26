@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
 
 const EditPost = () => {
      const { id } = useParams();
+     let navigate = useNavigate(); 
      const [post, setPost] = useState({
           title: '',
           description: '',
@@ -36,7 +37,7 @@ const EditPost = () => {
                .update({ title: post.title, description: post.description, image_URL: post.image_URL })
                .eq('id', id); 
 
-          window.location = "/viewPosts";
+          navigate('/viewPosts');
      };
 
      const deletePost = async () => {
@@ -45,7 +46,7 @@ const EditPost = () => {
                .delete()
                .eq('id', id);
 
-          history.push('/read');
+          navigate('/viewPosts');
      };
 
      return (
@@ -63,7 +64,9 @@ const EditPost = () => {
                     required
                />
                <div>
-                    <label htmlFor="description">Description:</label>
+                    <div>
+                         <label htmlFor="description">Description:</label>
+                    </div>
                     <textarea id="description" name="description" rows="5" cols="50"
                          type="text"
                          style={{
@@ -91,7 +94,7 @@ const EditPost = () => {
                          onChange={(e) => setPost({ ...post, image_URL: e.target.value })}
                />
                <button className="submit-btn" type="submit-btn">Update Post</button>
-               <button className='delete-btn' onClick={deletePost}>Delete Post</button>
+               <button className='delete-btn' onClick={deletePost}>Delete Post</button>               
           </form>
      </div>
      );
